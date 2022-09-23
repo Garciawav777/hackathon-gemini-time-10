@@ -1,0 +1,23 @@
+.categorias .gridContainer {
+	margin-top: 45px;
+}
+
+.categorias .textNames {
+	text-align: center;
+	font-size: 14px;
+}
+
+.categorias .imgCategory {
+	max-width: 350px;
+	border-top-left-radius: 15px;
+	border-top-right-radius: 15px;
+	margin-bottom: 4px;
+}
+
+.categorias .containerCategorias {
+	display: flex;
+	align-items: center;
+	flex-direction: column;
+	margin: 10px 0 5px;
+	cursor: pointer;
+}

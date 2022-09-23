@@ -1,0 +1,53 @@
+.full-height {
+  height: calc(100vh - 98px);
+}
+
+.full-height .MuiContainer-root {
+  padding: 0 27px;
+}
+
+.full-height .title-home {
+  padding: 41px 0 17px 0;
+  display: flex;
+  min-height: 64px;
+  justify-content: center;
+}
+
+.full-height .MuiTypography-h5 {
+  width: 50%;
+}
+
+.full-height .subtitle {
+  padding-bottom: 14px;
+  min-height: 62px;
+  max-width: 20px;
+}
+
+.full-height .descricao {
+  min-height: 140px;
+}
+
+.full-height .actions {
+  padding: 50px 0 15px 0;
+  display: flex;
+  justify-content: space-between;
+}
+
+.full-height .actions .MuiButton-contained {
+  width: calc(100vw - 200px);
+  font-weight: 700;
+}
+
+.full-height .actions .MuiFab-label {
+  margin-left: 5px;
+}
+
+.full-height .main-image {
+  width: 100%;
+}
+
+.loading {
+  display: flex;
+  justify-content: center;
+  margin: 30px 0 10px;
+}
