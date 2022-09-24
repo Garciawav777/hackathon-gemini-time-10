@@ -1,6 +1,7 @@
 import { Container, Typography, CircularProgress } from "@material-ui/core";
 import { useEffect, useState } from "react";
 import { getRestaurantes } from "../../services/restaurantes.service";
+import {  useParams } from "react-router-dom";
 import "./style.css";
 
 function RestaurantesPage() {
@@ -10,14 +11,16 @@ function RestaurantesPage() {
   const [restaurantesCaro, setRestaurantesCaro] = useState([]);
   const [loading, setLoading] = useState(true);
 
+  const { id } = useParams();
+
   useEffect(() => {
-    getRestaurantes().then((response) => {
-      setNomeCategoria(response.categoria)
+    getRestaurantes(id).then((response) => {
+      setNomeCategoria(response.categoria);
       setRestaurantesBaratinho(response.baratinho);
       setRestaurantesNoPreco(response.no_preco);
       setRestaurantesCaro(response.caro);
       setLoading(false);
-    })
+    });
   }, []);
 
   return (
@@ -35,13 +38,27 @@ function RestaurantesPage() {
           Baratinho <span>(</span>$ <span>$ $ $ $)</span>
         </Typography>
       </div>
-      {restaurantesBaratinho?.map(restaurante => (
-        <div key={restaurante.id}>
-          {restaurante.nome}
-        </div>
+      {restaurantesBaratinho?.map((restaurante) => (
+        <div key={restaurante.id}>{restaurante.nome}</div>
+      ))}
+      <div className="sub-header">
+        <Typography variant="body1" color="primary">
+          No preço <span>(</span>$ $ $ <span>$ $ )</span>
+        </Typography>
+      </div>
+      {restaurantesNoPreco?.map((restaurante) => (
+        <div key={restaurante.id}>{restaurante.nome}</div>
+      ))}
+      <div className="sub-header">
+        <Typography variant="body1" color="primary">
+          Caro, mas vale a pena <span>(</span>$ $ $ $ $ <span> )</span>
+        </Typography>
+      </div>
+      {restaurantesCaro?.map((restaurante) => (
+        <div key={restaurante.id}>{restaurante.nome}</div>
       ))}
     </Container>
-  )
+  );
 }
 
 export default RestaurantesPage;
