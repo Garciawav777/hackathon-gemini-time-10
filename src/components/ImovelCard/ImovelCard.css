@@ -1,0 +1,9 @@
+.imovelCard{
+    max-width: 350px;
+}
+
+.imovelCard .linhaPrincipal{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
