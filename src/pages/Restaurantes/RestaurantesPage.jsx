@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 import { getRestaurantes } from "../../services/restaurantes.service";
 import { useParams } from "react-router-dom";
 import "./style.css";
+import RestauranteCard from "../../components/RestauranteCard/";
 import { useNavigate } from "react-router-dom";
 
 function RestaurantesPage() {
@@ -48,9 +49,7 @@ function RestaurantesPage() {
       </div>
 
       {restaurantesBaratinho?.map((restaurante) => (
-        <div key={restaurante.id} onClick={() => irParaDetalhe(restaurante.id)}>
-          {restaurante.nome}
-        </div>
+        <RestauranteCard key={restaurante.id} restaurante={restaurante} onClick={() => irParaDetalhe(restaurante.id)}/>
       ))}
 
       <div className="sub-header">
@@ -59,9 +58,7 @@ function RestaurantesPage() {
         </Typography>
       </div>
       {restaurantesNoPreco?.map((restaurante) => (
-         <div key={restaurante.id} onClick={() => irParaDetalhe(restaurante.id)}>
-         {restaurante.nome}
-       </div>
+        <RestauranteCard key={restaurante.id} restaurante={restaurante} onClick={() => irParaDetalhe(restaurante.id)}/>
       ))}
       <div className="sub-header">
         <Typography variant="body1" color="primary">
@@ -69,9 +66,7 @@ function RestaurantesPage() {
         </Typography>
       </div>
       {restaurantesCaro?.map((restaurante) => (
-         <div key={restaurante.id} onClick={() => irParaDetalhe(restaurante.id)}>
-         {restaurante.nome}
-       </div>
+        <RestauranteCard key={restaurante.id} restaurante={restaurante} onClick={() => irParaDetalhe(restaurante.id)}/>
       ))}
     </Container>
   );
