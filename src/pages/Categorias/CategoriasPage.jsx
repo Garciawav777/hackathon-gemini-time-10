@@ -22,7 +22,7 @@ function CategoriasPage() {
 
   return (
     <Container className="categorias">
-      <Typography onClick={debug} variant="h5" align="center" color="primary" className="title">
+      <Typography variant="h5" align="center" color="primary" className="title">
         RESTAURANTES
       </Typography>
       {loading && (
