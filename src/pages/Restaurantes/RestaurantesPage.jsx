@@ -29,7 +29,7 @@ function RestaurantesPage() {
   //Função para clicar e redirecionar ao restaurante específico
   function irParaDetalhe(id){
     console.log('clicou, id: ' + id)
-    //navigate(`/restaurantesEspecificos/${id}`)
+    navigate(`/restaurantesEspecificos/${id}`)
   }
 
   return (
@@ -49,7 +49,7 @@ function RestaurantesPage() {
       </div>
 
       {restaurantesBaratinho?.map((restaurante) => (
-        <RestauranteCard key={restaurante.id} restaurante={restaurante} onClick={() => irParaDetalhe(restaurante.id)}/>
+        <div onClick={() => irParaDetalhe(restaurante.id)}> <RestauranteCard key={restaurante.id} restaurante={restaurante}/></div>
       ))}
 
       <div className="sub-header">
@@ -58,7 +58,7 @@ function RestaurantesPage() {
         </Typography>
       </div>
       {restaurantesNoPreco?.map((restaurante) => (
-        <RestauranteCard key={restaurante.id} restaurante={restaurante} onClick={() => irParaDetalhe(restaurante.id)}/>
+        <div onClick={() => irParaDetalhe(restaurante.id)}><RestauranteCard key={restaurante.id} restaurante={restaurante}/></div>
       ))}
       <div className="sub-header">
         <Typography variant="body1" color="primary">
@@ -66,7 +66,7 @@ function RestaurantesPage() {
         </Typography>
       </div>
       {restaurantesCaro?.map((restaurante) => (
-        <RestauranteCard key={restaurante.id} restaurante={restaurante} onClick={() => irParaDetalhe(restaurante.id)}/>
+        <div><RestauranteCard key={restaurante.id} restaurante={restaurante}/></div>
       ))}
     </Container>
   );
