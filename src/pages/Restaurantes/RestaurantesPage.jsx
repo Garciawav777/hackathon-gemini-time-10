@@ -1,8 +1,10 @@
 import { Container, Typography, CircularProgress } from "@material-ui/core";
 import { useEffect, useState } from "react";
 import { getRestaurantes } from "../../services/restaurantes.service";
-import {  useParams } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import "./style.css";
+import RestauranteCard from "../../components/RestauranteCard/";
+import { useNavigate } from "react-router-dom";
 
 function RestaurantesPage() {
   const [nomeCategoria, setNomeCategoria] = useState([]);
@@ -12,6 +14,7 @@ function RestaurantesPage() {
   const [loading, setLoading] = useState(true);
 
   const { id } = useParams();
+  const navigate = useNavigate();
 
   useEffect(() => {
     getRestaurantes(id).then((response) => {
@@ -21,7 +24,13 @@ function RestaurantesPage() {
       setRestaurantesCaro(response.caro);
       setLoading(false);
     });
-  }, []);
+  }, []); //Array vazio para carregar somente uma vez
+
+  //Função para clicar e redirecionar ao restaurante específico
+  function irParaDetalhe(id){
+    console.log('clicou, id: ' + id)
+    //navigate(`/restaurantesEspecificos/${id}`)
+  }
 
   return (
     <Container className="restaurantes">
@@ -38,16 +47,18 @@ function RestaurantesPage() {
           Baratinho <span>(</span>$ <span>$ $ $ $)</span>
         </Typography>
       </div>
+
       {restaurantesBaratinho?.map((restaurante) => (
-        <div key={restaurante.id}>{restaurante.nome}</div>
+        <RestauranteCard key={restaurante.id} restaurante={restaurante} onClick={() => irParaDetalhe(restaurante.id)}/>
       ))}
+
       <div className="sub-header">
         <Typography variant="body1" color="primary">
           No preço <span>(</span>$ $ $ <span>$ $ )</span>
         </Typography>
       </div>
       {restaurantesNoPreco?.map((restaurante) => (
-        <div key={restaurante.id}>{restaurante.nome}</div>
+        <RestauranteCard key={restaurante.id} restaurante={restaurante} onClick={() => irParaDetalhe(restaurante.id)}/>
       ))}
       <div className="sub-header">
         <Typography variant="body1" color="primary">
@@ -55,7 +66,7 @@ function RestaurantesPage() {
         </Typography>
       </div>
       {restaurantesCaro?.map((restaurante) => (
-        <div key={restaurante.id}>{restaurante.nome}</div>
+        <RestauranteCard key={restaurante.id} restaurante={restaurante} onClick={() => irParaDetalhe(restaurante.id)}/>
       ))}
     </Container>
   );
