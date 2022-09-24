@@ -4,33 +4,39 @@ import { getAllRestaurantes } from "../../services/restaurantes.service";
 import "./style.css";
 
 function RestaurantesPage() {
+  const [respostaApi, setRespostaApi] = useState([])
   const [nomeCategoria, setNomeCategoria] = useState([]);
-  const [restaurantesBaratinho, setRestaurantesBaratinho] = useState();
+  const [restaurantesBaratinho, setRestaurantesBaratinho] = useState([]);
   const [restaurantesNoPreco, setRestaurantesNoPreco] = useState([]);
   const [restaurantesCaro, setRestaurantesCaro] = useState([]);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    getAllRestaurantes().then((response) => {response.map(itemResposta => {
-      itemResposta.map(item => {
-        console.log(item.baratinho);
-      })
-      setRestaurantesBaratinho(itemResposta.baratinho);
+    getAllRestaurantes().then((response) => {
+      setRespostaApi(response)
       
-    })})
+      
+    })
   }, []);
 
-  
+  const baratinho = respostaApi.map(item => {
+    return item.baratinho
+  })
+
+
+  const baratinhoItem = baratinho.map((item, i) => {
+    return item
+  })
+
+
   // setNomeCategoria(response.categoria)
-  // setRestaurantesBaratinho(response.baratinho);
-  // setRestaurantesNoPreco(response.no_preco);
-  // setRestaurantesCaro(response.caro);
-  // setLoading(false);
-  // console.log(response)
-  
+  //     setRestaurantesBaratinho(response.baratinho);
+  //     setRestaurantesNoPreco(response.no_preco);
+  //     setRestaurantesCaro(response.caro);
+  //     setLoading(false);
 
   const debug = () => {
-    console.log(restaurantesBaratinho);
+    console.log(baratinho);
   }
 
   return (
