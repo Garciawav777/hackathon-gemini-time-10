@@ -11,15 +11,23 @@ function RestaurantesPage() {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    getAllRestaurantes().then((response) => {
-      setNomeCategoria(response.categoria)
-      setRestaurantesBaratinho(response.baratinho);
-      setRestaurantesNoPreco(response.no_preco);
-      setRestaurantesCaro(response.caro);
-      setLoading(false);
-      console.log(response)
-    })
+    getAllRestaurantes().then((response) => {response.map(itemResposta => {
+      itemResposta.map(item => {
+        console.log(item.baratinho);
+      })
+      setRestaurantesBaratinho(itemResposta.baratinho);
+      
+    })})
   }, []);
+
+  
+  // setNomeCategoria(response.categoria)
+  // setRestaurantesBaratinho(response.baratinho);
+  // setRestaurantesNoPreco(response.no_preco);
+  // setRestaurantesCaro(response.caro);
+  // setLoading(false);
+  // console.log(response)
+  
 
   const debug = () => {
     console.log(restaurantesBaratinho);
