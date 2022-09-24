@@ -8,11 +8,11 @@ body {
 }
 
 .loading {
-	display: flex;
-	justify-content: center;
-	margin: 30px 0 10px;
+  display: flex;
+  justify-content: center;
+  margin: 30px 0 10px;
 }
 
 .title {
-	margin: 15px 0 15px !important;
+  margin: 15px 0 15px !important;
 }

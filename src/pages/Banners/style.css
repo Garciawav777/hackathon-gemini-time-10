@@ -7,10 +7,13 @@
 }
 
 .full-height .title-home {
-  padding: 41px 0 17px 0;
+  font-size: 36px;
+  font-weight: 700;
+  padding: 17px 0 17px 0;
   display: flex;
   min-height: 64px;
   justify-content: center;
+  line-height: 41px;
 }
 
 .full-height .MuiTypography-h5 {
@@ -18,17 +21,24 @@
 }
 
 .full-height .subtitle {
-  padding-bottom: 14px;
+  text-align: center;
   min-height: 62px;
-  max-width: 20px;
+  min-width: 140px;
+  font-weight: 600;
+  font-size: 17px;
+  line-height: 18px;
 }
 
 .full-height .descricao {
   min-height: 140px;
+  font-size: 12pt;
+  font-weight: 500;
+  margin-bottom: 0px;
+  line-height: 13px;
 }
 
 .full-height .actions {
-  padding: 50px 0 15px 0;
+  padding: 0px 0 15px 0;
   display: flex;
   justify-content: space-between;
 }
