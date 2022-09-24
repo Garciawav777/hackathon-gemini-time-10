@@ -1,7 +1,7 @@
 import { Container, Typography, CircularProgress } from "@material-ui/core";
 import { useEffect, useState } from "react";
 import { getRestaurantes } from "../../services/restaurantes.service";
-import {  Navigate, useParams } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import "./style.css";
 import { useNavigate } from "react-router-dom";
 
@@ -13,6 +13,7 @@ function RestaurantesPage() {
   const [loading, setLoading] = useState(true);
 
   const { id } = useParams();
+  const navigate = useNavigate();
 
   useEffect(() => {
     getRestaurantes(id).then((response) => {
@@ -26,7 +27,8 @@ function RestaurantesPage() {
 
   //Função para clicar e redirecionar ao restaurante específico
   function irParaDetalhe(id){
-    Navigate(`/restaurantes/${id}`)
+    console.log('clicou, id: ' + id)
+    //navigate(`/restaurantesEspecificos/${id}`)
   }
 
   return (
@@ -57,7 +59,9 @@ function RestaurantesPage() {
         </Typography>
       </div>
       {restaurantesNoPreco?.map((restaurante) => (
-        <div key={restaurante.id}>{restaurante.nome}</div>
+         <div key={restaurante.id} onClick={() => irParaDetalhe(restaurante.id)}>
+         {restaurante.nome}
+       </div>
       ))}
       <div className="sub-header">
         <Typography variant="body1" color="primary">
@@ -65,7 +69,9 @@ function RestaurantesPage() {
         </Typography>
       </div>
       {restaurantesCaro?.map((restaurante) => (
-        <div key={restaurante.id}>{restaurante.nome}</div>
+         <div key={restaurante.id} onClick={() => irParaDetalhe(restaurante.id)}>
+         {restaurante.nome}
+       </div>
       ))}
     </Container>
   );
