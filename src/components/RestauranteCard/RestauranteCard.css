@@ -1,0 +1,32 @@
+.restaurante-card {
+  display: flex;
+  background: #d9d9d946;
+  max-height: 89px;
+  margin: 20px 0;
+}
+
+.body {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  padding: 5px;
+}
+
+.body h1 {
+  font-weight: 700;
+  font-size: 14px;
+  margin: 0;
+  color: #4b4b4b;
+}
+
+.restaurante-card img {
+  max-width: 90.44px;
+}
+
+.distancia {
+  font-size: 14px;
+}
+
+.nota {
+  color: #ed6e27;
+}
