@@ -1,8 +1,9 @@
 import { Container, Typography, CircularProgress } from "@material-ui/core";
 import { useEffect, useState } from "react";
 import { getRestaurantes } from "../../services/restaurantes.service";
-import {  useParams } from "react-router-dom";
+import {  Navigate, useParams } from "react-router-dom";
 import "./style.css";
+import { useNavigate } from "react-router-dom";
 
 function RestaurantesPage() {
   const [nomeCategoria, setNomeCategoria] = useState([]);
@@ -21,7 +22,12 @@ function RestaurantesPage() {
       setRestaurantesCaro(response.caro);
       setLoading(false);
     });
-  }, []);
+  }, []); //Array vazio para carregar somente uma vez
+
+  //Função para clicar e redirecionar ao restaurante específico
+  function irParaDetalhe(id){
+    Navigate(`/restaurantes/${id}`)
+  }
 
   return (
     <Container className="restaurantes">
@@ -38,9 +44,13 @@ function RestaurantesPage() {
           Baratinho <span>(</span>$ <span>$ $ $ $)</span>
         </Typography>
       </div>
+
       {restaurantesBaratinho?.map((restaurante) => (
-        <div key={restaurante.id}>{restaurante.nome}</div>
+        <div key={restaurante.id} onClick={() => irParaDetalhe(restaurante.id)}>
+          {restaurante.nome}
+        </div>
       ))}
+
       <div className="sub-header">
         <Typography variant="body1" color="primary">
           No preço <span>(</span>$ $ $ <span>$ $ )</span>

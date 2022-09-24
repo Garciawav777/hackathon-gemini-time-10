@@ -1,0 +1,10 @@
+.imovel{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.imovel .link{
+    margin: 15px;
+    width: 100%;
+}
